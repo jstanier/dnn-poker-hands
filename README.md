@@ -17,7 +17,6 @@ You can run it using default parameters like so:
 
 ```
 python estimator.py 
-
 ```
 
 ## Results

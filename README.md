@@ -32,4 +32,4 @@ I don't know much about how to scientifically test and tune neutral networks (ye
 * 5 hidden layers of 100 neurons, 50000 training steps: 0.954
 * 10 hidden layers of 100 neurons, 50000 training steps: 0.694
 
-The original paper achieved 0.924.
+The [original paper](https://eembdersler.files.wordpress.com/2010/09/2014913024-gokaydisken-project.pdf) achieved 0.924.

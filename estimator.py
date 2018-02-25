@@ -42,6 +42,36 @@ def main(argv):
 
     print('\nTest set accuracy: {accuracy:0.3f}\n'.format(**eval_result))
 
+    # Generate predictions
+    expected = ['Royal flush', 'Two pairs', 'Full house']
+    predict_x = {
+        'card_1_suit': [1, 1, 2],
+        'card_1_rank': [1, 11, 6],
+        'card_2_suit': [1, 2, 3],
+        'card_2_rank': [13, 11, 6],
+        'card_3_suit': [1, 3, 4],
+        'card_3_rank': [12, 3, 6],
+        'card_4_suit': [1, 4, 1],
+        'card_4_rank': [11, 3, 13],
+        'card_5_suit': [1, 2, 2],
+        'card_5_rank': [10, 2, 13],
+    }
+
+    predictions = classifier.predict(
+        input_fn=lambda:poker_data.eval_input_fn(predict_x,
+                                                 labels=None,
+                                                 batch_size=args.batch_size)
+    )
+
+    for pred_dict, expec in zip(predictions, expected):
+        template = ('\nPrediction is "{}" ({:.1f}%), expected "{}"')
+
+        class_id = pred_dict['class_ids'][0]
+        probability = pred_dict['probabilities'][class_id]
+
+        print(template.format(poker_data.POKER_HANDS[class_id],
+                              100 * probability, expec))
+
 if __name__ == '__main__':
     tf.logging.set_verbosity(tf.logging.INFO)
     tf.app.run(main)

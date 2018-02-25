@@ -16,7 +16,7 @@ This assumes you have virtualenv with support for Python 3 installed.
 You can run it using default parameters like so:
 
 ```
-python estimator.py 
+python estimator.py ********
 
 ```
 

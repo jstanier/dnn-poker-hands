@@ -5,7 +5,7 @@ import poker_data
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--batch_size', default=100, type=int, help='batch size')
-parser.add_argument('--train_steps', default=1000, type=int, help='number of training steps')
+parser.add_argument('--train_steps', default=50000, type=int, help='number of training steps')
 
 def main(argv):
     args = parser.parse_args(argv[1:])
@@ -21,11 +21,11 @@ def main(argv):
 
     # Build a DNN, which takes the following inputs:
     # 1. The feature columns, defined above.
-    # 2. The number of hidden layers, in this case 2 layers with 10 neurons each.
+    # 2. The number of hidden layers, in this case 10 layers with 100 neurons each.
     # 3. The number of labels (classes) to predict. There are 10 possible in poker_data.
     classifier = tf.estimator.DNNClassifier(
         feature_columns=feature_columns,
-        hidden_units=[10, 10],
+        hidden_units=[100,100,100,100,100],
         n_classes=10
     )
 
